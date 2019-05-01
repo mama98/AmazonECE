@@ -1,11 +1,12 @@
+<?php
+session_start();
+?>
 <html>
 <head>
 <title>Connection</title>
 </head>
 <body>
-<?php
-session_start();
-?>
+
     <form action="utilTest.php" method="post">
     <table>
         <tr>
@@ -21,6 +22,7 @@ session_start();
         </tr> 
     </table>
     </form>
+    <form action='newUtil.php' method='POST'><input class='button' type='submit' value='Créer un compte'></form>
 
 </body>
 </html>

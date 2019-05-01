@@ -1,5 +1,6 @@
  <?php
  session_start();
+ 
     $Pseudo = isset($_POST["Pseudo"])? $_POST["Pseudo"] : "";
     $Mdp = isset($_POST["Mdp"])? $_POST["Mdp"] : "";
     
@@ -14,7 +15,7 @@
     }
 
     if($erreur == "") {
-        $_SESSION["Pseudo"]=$Pseudo;
+        $_SESSION["login_utilisateur"]=$Pseudo;
         define('DB_SERVER', 'localhost');
         define('DB_USER', 'root');
         define('DB_PASS', '');
@@ -46,7 +47,11 @@
                         echo "<BR><BR><input class='button' type='submit' value='Créer un compte'\>";
                         echo "</form></div>";
                 }	
-                else include "mainAcheteur.php";
+                else {
+                    $id=$db_handle->insert_id;
+                    $_SESSION["id_utilisateur"]=$id;
+                    include "mainAcheteur.php";
+                }
             
 
         } else{ echo "Database not found";}

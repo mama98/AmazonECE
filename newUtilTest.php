@@ -1,4 +1,5 @@
 <?php
+session_start();
 
     $NomUtil = isset($_POST["NomUtil"])? $_POST["NomUtil"] : "";
     $PrenomUtil = isset($_POST["PrenomUtil"])? $_POST["PrenomUtil"] : "";
@@ -26,6 +27,7 @@
     }
 
     if($erreur == "") {
+        $_SESSION["login_utilisateur"]=$PseudoUtil;
         define('DB_SERVER', 'localhost');
         define('DB_USER', 'root');
         define('DB_PASS', '');
@@ -40,26 +42,58 @@
         //si le BDD existe, faire le traitement
         if($db_found){
 
-            $sql = "INSERT INTO utilisateur(prenom_utilisateur, nom_utilisateur, email_utilisateur, login_utilisateur, mdp_utilisateur) VALUES('$PrenomUtil', '$NomUtil', '$MailUtil', '$PseudoUtil', '$MdpUtil')";
-            $result = mysqli_query($db_handle, $sql);
-
-            $id_util = "SELECT id_utilisateur from utilisateur WHERE login_utilisateur='$PseudoUtil'";
-            $result1 = mysqli_query($db_handle, $id_util);
-
-            $sql_id = "INSERT INTO acheteur(id_acheteur) VALUES ($result1)";
-
-            $sql1 = "SELECT * FROM utilisateur where login_utilisateur='$PseudoUtil'";
+            $sql_login = "SELECT login_utilisateur, email_utilisateur FROM utilisateur";
+            $found=0;
             
-            $result3 = mysqli_query($db_handle, $sql1);
+            $result2 = mysqli_query($db_handle, $sql_login);
+                if (mysqli_num_rows($result2) > 0) {
+                    while($row = mysqli_fetch_assoc($result2)) 
+                    {
+                        if ( ($PseudoUtil==$row["login_utilisateur"]) || ($MailUtil==$row['email_utilisateur'])){
+                            $found++;
+                        }
+                    }
+                }
+                if ($found>0){
+                        echo "Oups ! Le pseudo ou l'email existent déjà... Veillez recommencer.";
+                        echo "<form action='newUtil.php' method='POST'\>";
+                        echo "<BR><input class='button' type='submit' value='Retour'\>";
+                        echo "</form></div>";
+                }	
 
-            while($data = mysqli_fetch_assoc($result3)){
+                else {
 
-                echo "Nom : ".$data['nom_utilisateur'].'<br>';
-                echo "Prenom : ".$data['prenom_utilisateur'].'<br>';
-                echo "Mail : ".$data['email_utilisateur'].'<br>';
-                echo "Pseudo : ".$data['login_utilisateur'].'<br><br>';
-                
-            }
+                        $sql = "INSERT INTO utilisateur(prenom_utilisateur, nom_utilisateur, email_utilisateur, login_utilisateur, mdp_utilisateur) VALUES('$PrenomUtil', '$NomUtil', '$MailUtil', '$PseudoUtil', '$MdpUtil')";
+                        $result = mysqli_query($db_handle, $sql);
+
+                        //$id=$db_handle->insert_id;
+                        //$_SESSION["id_utilisateur"]=$id;
+                        
+
+                        //$id_util = "SELECT id_utilisateur from utilisateur WHERE email_utilisateur='$MailUtil'";
+                        //$result1 = mysqli_query($db_handle, $id_util);
+
+                        //$sql_id = "INSERT INTO acheteur(id_acheteur) VALUES ('$id_util')";
+
+                        $sql1 = "SELECT * FROM utilisateur where email_utilisateur='$MailUtil'";
+                        
+                        $result3 = mysqli_query($db_handle, $sql1);
+
+                        while($data = mysqli_fetch_assoc($result3)){
+
+                            echo "Nom : ".$data['nom_utilisateur'].'<br>';
+                            echo "Prenom : ".$data['prenom_utilisateur'].'<br>';
+                            echo "Mail : ".$data['email_utilisateur'].'<br>';
+                            echo "Pseudo : ".$data['login_utilisateur'].'<br><br>';
+
+                            /*echo "<form action='nmainUtil.php' method='POST'\>";
+                            echo "<BR><input class='button' type='submit' value='Retour'\>";
+                            echo "</form></div>";*/
+                            
+                        }
+
+                    } 
+
         } else{ echo "Database not found";}
 
         mysqli_close($db_handle);
@@ -70,6 +104,6 @@
 
     }
 
-    echo "<BR><form><button class='button' formaction='utilTest.php' type='submit' >Return to the menu</button></form>";
+    echo "<BR><form><button class='button' formaction='mainUtil.php' type='submit' >Retour au menu principal</button></form>";
 
 ?>

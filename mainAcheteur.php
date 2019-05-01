@@ -1,9 +1,11 @@
+<?php
+session_start();
+?>
 <html>
 <head>
 <title>Informations personnelles</title>
 </head>
 <body>
-
     <form action="acheteurTest.php" method="post">
     <table>
         <tr>

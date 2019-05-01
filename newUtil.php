@@ -1,11 +1,12 @@
+<?php
+session_start();
+?>
 <html>
 <head>
 <title>Créez votre compte</title>
 </head>
 <body>
-<?php
-session_start();
-?>
+
     <form action="newUtilTest.php" method="post">
     <table>
         <tr>
