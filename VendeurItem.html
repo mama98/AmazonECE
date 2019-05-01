@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Création de votre compte vendeur AmazonECE</title>
+	<meta charset="utf-8">
+</head>
+<body>
+	<h3>Enregistrement de l'utilisateur</h3>
+	<p>Veuillez remplir les informations suivantes afin de créer votre compte:</p>
+	<form action="VendeurItem.php" method="post">
+		<table>
+
+			<tr>
+				<td>Nom de l'article:</td>
+				<td><input type="text" name="nom"/></td>
+			</tr>		
+
+			 <tr>
+			 <td>Catégorie:</td>
+			 <td> <div>
+			    <input type="radio" id="catégorieChoix1"
+			     name="categorie" value="livres">
+			    <label for="catégorieChoix1">Livres</label>
+
+			    <input type="radio" id="catégorieChoix2"
+			     name="categorie" value="musique">
+			    <label for="catégorieChoix2">Musique</label>
+			    </div>
+			    <div>
+			    <input type="radio" id="catégorieChoix3"
+			     name="categorie" value="vetements">
+			    <label for="catégorieChoix3">Vêtements</label>		
+
+			    <input type="radio" id="catégorieChoix4"
+			     name="categorie" value="sports_loisirs">
+			    <label for="catégorieChoix4">Sports et Loisirs</label>
+			  </div> 
+			</td>
+			</tr>
+
+			<tr>
+				<td>Description de l'article:</td>
+				<td><input type="text" name="description"/></td>
+			</tr>
+			<tr>
+				<td>Quantité à vendre:</td>
+				<td><input type="text" name="quantite"/></td>
+			</tr>
+			<tr>
+				<td>Prix:</td>
+				<td><input type="text" name="prix"/></td>
+			</tr>
+
+			<tr>
+			<td colspan="2" align="center">
+				<input type="submit" value="Valider et passer à l'étape suivante" />
+			</td>
+			</tr>
+
+			</table>
+			</form>
+			<div id="errordiv">
+			</div>
+		</body>
+		</html>

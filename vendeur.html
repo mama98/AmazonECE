@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Création de votre compte vendeur AmazonECE</title>
+	<meta charset="utf-8">
+</head>
+<body>
+	<h3>Enregistrement de l'utilisateur</h3>
+	<p>Veuillez remplir les informations suivantes afin de créer votre compte:</p>
+	<form action="vendeur.php" method="post" enctype="multipart/form-data">
+		<table>
+			<tr>
+				<td>Nom:</td>
+				<td><input type="text" name="nom"/></td>
+			</tr>
+			<tr>
+				<td>Prénom:</td>
+				<td><input type="text" name="prenom"/></td>
+			</tr>
+			<tr>
+				<td>Email:</td>
+				<td><input type="text" name="email"/></td>
+			</tr>
+			<tr>
+				<td>Pseudo:</td>
+				<td><input type="text" name="login"/></td>
+			</tr>
+			<tr>
+				<td>Mot de Passe:</td>
+				<td><input type="text" name="mdp"/></td>
+			</tr>
+			<tr>
+				<td>IBAN:</td>
+				<td><input type="text" name="IBAN"/></td>
+			</tr>
+			<tr>
+			<td colspan="2" align="center">
+				<input type="submit" value="Valider" />
+			</td>
+			</tr>
+
+			</table>
+			</form>
+			<div id="errordiv">
+			</div>
+		</body>
+		</html>
