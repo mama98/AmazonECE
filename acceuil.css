@@ -1,0 +1,52 @@
+
+/*////////////////TOP NAV BAR////////////////*/
+
+.top-bar{
+    background-color: #DCDCDC;
+    min-height:60px;
+    padding-top:5px;
+    padding-bottom: 0px;
+}
+
+.top-bar .contacter {
+    display: block;
+    color: black;
+    float: right;
+    text-align: right;
+}
+
+.navbar-brand {
+float:left;
+}
+
+.navbar-inverse {
+    background-color: #009688;
+    min-height: 90px;
+    
+}
+
+.navbar-header li{
+    list-style-type:none;
+    display:inline-block;
+}
+
+.navbar-inverse .navbar-nav > li > a {
+    color: #fff;
+        
+}
+.nav > li > a {
+    position: relative;
+    display: block;
+    padding: 15px 11px;
+    color: #fff;
+    list-style-type:none;
+}
+#ventesflash{
+    color:red;
+}
+#categorie li a{
+    color:black;
+}
+#cart-heart {
+font-size:20px; 
+}
