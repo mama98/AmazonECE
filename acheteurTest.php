@@ -75,9 +75,10 @@ session_start();
         //si le BDD existe, faire le traitement
         if($db_found){
 
-            $id_util=$_SESSION["id_utilisateur"];
-            echo $id_util;
-            $sql = "INSERT INTO acheteur(id_utilisateur, nom_acheteur, prenom_acheteur, adresseL1_acheteur, adresseL2_acheteur, ville, codePostal, pays, numTel, typeCarte, numCarte, nomCarte, dateMois, dateAnnee, codeSecurite) VALUES ('$id_util', '$Nom', '$Prenom', '$Adresse1', '$Adresse2', '$Ville','$CodeP', '$Pays', '$NumTel', '$TypeCarte', '$NumCarte', '$NomCarte', '$DateMois',' $DateAnnee', '$CodeSecu')";
+            $sql = "INSERT INTO acheteur(id_acheteur, nom_acheteur, prenom_acheteur, adresseL1_acheteur, adresseL2_acheteur, ville, codePostal, pays,
+             numTel, typeCarte, numCarte, nomCarte, dateMois, dateAnnee, codeSecurite) 
+             VALUES ('".$_SESSION['id']."', '$Nom', '$Prenom', '$Adresse1', '$Adresse2', '$Ville','$CodeP', '$Pays',
+              '$NumTel', '$TypeCarte', '$NumCarte', '$NomCarte', '$DateMois',' $DateAnnee', '$CodeSecu')";
             $result = mysqli_query($db_handle, $sql);
 
             $sql1 = "select * FROM acheteur";

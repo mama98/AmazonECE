@@ -1,5 +1,6 @@
  <?php
  session_start();
+ mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
  
     $Pseudo = isset($_POST["Pseudo"])? $_POST["Pseudo"] : "";
     $Mdp = isset($_POST["Mdp"])? $_POST["Mdp"] : "";
@@ -30,7 +31,7 @@
         //si le BDD existe, faire le traitement
         if($db_found){
 
-            $sql_user = "SELECT login_utilisateur FROM utilisateur";
+            $sql_user = "SELECT * FROM utilisateur";
             $found=0;
             $result = mysqli_query($db_handle, $sql_user);
                 if (mysqli_num_rows($result) > 0) {
@@ -38,7 +39,10 @@
                     {
                         if ($Pseudo==$row["login_utilisateur"]){
                             $found=1;
+                            $_SESSION['id'] = $row["id_utilisateur"];
+                            $MdpSession = $row["mdp_utilisateur"];
                         }
+                        
                     }
                 }
                 if ($found==0){
@@ -48,9 +52,17 @@
                         echo "</form></div>";
                 }	
                 else {
-                    $id=$db_handle->insert_id;
-                    $_SESSION["id_utilisateur"]=$id;
-                    include "mainAcheteur.php";
+
+                    if ($Mdp==$MdpSession){
+                        include "mainAcheteur.php";
+                    }
+                    else {
+                        echo "Mot de passe incorrect.";
+                        echo "<form action='mainUtil.php' method='POST'\>";
+                        echo "<BR><input class='button' type='submit' value='Retour'\>";
+                        echo "</form></div>";
+                    }
+                    
                 }
             
 

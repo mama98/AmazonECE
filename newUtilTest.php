@@ -104,6 +104,6 @@ session_start();
 
     }
 
-    echo "<BR><form><button class='button' formaction='mainUtil.php' type='submit' >Retour au menu principal</button></form>";
+    echo "<BR><form><button class='button' formaction='newUtil.php' type='submit' >Retour</button></form>";
 
 ?>
