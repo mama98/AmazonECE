@@ -6,6 +6,7 @@
 					<script>
 
 				function myFunctionLivres() {
+				   <?php $_SESSION['cat'] = 1;?>
 					var livres = document.getElementById("Livres");
 					var musique = document.getElementById("Musique");
 					var vetements = document.getElementById("Vetements");
@@ -23,6 +24,7 @@
 				}
 
 				function myFunctionMusique() {
+					<?php $_SESSION['cat'] = 2;?>
 					var livres = document.getElementById("Livres");
 					var musique = document.getElementById("Musique");
 					var vetements = document.getElementById("Vetements");
@@ -41,6 +43,7 @@
 				}
 
 				function myFunctionVetements() {
+					<?php $_SESSION['cat'] = 3;?>
 					var livres = document.getElementById("Livres");
 					var musique = document.getElementById("Musique");
 					var vetements = document.getElementById("Vetements");
@@ -48,7 +51,6 @@
 					var loisir = document.getElementById("loisirs");
 					var sport = document.getElementById("sport");
 					var description = document.getElementById("Description");
-
 					livres.style.display="none";
 					musique.style.display="none";
 					vetements.style.display="block";
@@ -60,6 +62,7 @@
 				}
 
 				function myFunctionSportsLoisirs() {
+					<?php $_SESSION['cat'] = 4;?>
 					var livres = document.getElementById("Livres");
 					var musique = document.getElementById("Musique");
 					var vetements = document.getElementById("Vetements");

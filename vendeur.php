@@ -1,5 +1,6 @@
 <?php
  session_start();
+ $_SESSION['more_pics'] = false;
 
  $nom = isset($_POST["nom"])?$_POST["nom"] : ""; //if then else
  $prenom = isset($_POST["prenom"])?$_POST["prenom"] : "";
@@ -17,22 +18,15 @@
  if($IBAN == "") {$erreur .= "Le champ IBAN est vide. <br>";}
 
 if ($erreur == "") {
- echo "Formulaire valide";
- }
- else {
- echo "Erreur : $erreur";
- }
-
+	
 define('DB_SERVER', 'localhost');
 define('DB_USER', 'root');
 define('DB_PASS', '');
 
 //identifier le prenom de la base de donnee
-
 $database ="amazonece3";
 
 //connecter l'utilisateur dans BDD
-
 $db_handle= mysqli_connect(DB_SERVER, DB_USER, DB_PASS);
 //$db_handle2= mysqli_connect(DB_SERVER, DB_USER, DB_PASS, $database);
 $db_found= mysqli_select_db($db_handle, $database);
@@ -45,8 +39,8 @@ if($db_found){
 	$id = $db_handle->insert_id;
   $_SESSION['id_global'] = $id;
 	//echo $id;
-
-	$sql2= "INSERT INTO Vendeur(id_vendeur, IBAN_vendeur, photo_vendeur, fond_vendeur) VALUES ('$id', '$IBAN', NULL, NULL)";
+  //Ajouter images par defaut a la place de NULL
+	$sql2= "INSERT INTO Vendeur(id_vendeur, IBAN_vendeur, photo_vendeur, fond_vendeur) VALUES ('$id', '$IBAN', 'default.png', 'default.png')";
 	$result = mysqli_query($db_handle, $sql2);
 
   header("Location:my_profile.php");
@@ -60,4 +54,8 @@ else{
 }
 // fermer la connection
 mysqli_close($db_handle);
+ }
+ else {
+ echo "Erreur : $erreur";
+ }
 ?>

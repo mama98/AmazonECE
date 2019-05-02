@@ -1,16 +1,17 @@
  <?php
  session_start();
+ $_SESSION['more_pics'] = false;
 
     $Pseudo = isset($_POST["pseudo"])? $_POST["pseudo"] : "";
     $Email = isset($_POST["email"])? $_POST["email"] : "";
     $Mdp = isset($_POST["mdp"])? $_POST["mdp"] : "";
-    
+
     $erreur = "";
 
-    
+
     if($Pseudo == "") {
         $erreur .= "Le champ Pseudo est vide.<br>";
-    }   
+    }
      if($Email == "") {
         $erreur .= "Le champ Email est vide.<br>";
     }
@@ -33,25 +34,25 @@
         //si le BDD existe, faire le traitement
         if($db_found){
 
-            $sql = "SELECT login_utilisateur, email_utilisateur, mdp_utilisateur, id_utilisateur FROM utilisateur, vendeur WHERE id_utilisateur=id_vendeur AND login_utilisateur='$Pseudo' AND email_utilisateur='$Email' AND mdp_utilisateur='$Mdp' ";
+            $sql = "SELECT login_utilisateur, email_utilisateur, mdp_utilisateur, id_utilisateur FROM Utilisateur, Vendeur WHERE id_utilisateur=id_vendeur AND login_utilisateur='$Pseudo' AND email_utilisateur='$Email' AND mdp_utilisateur='$Mdp' ";
 
-            $found=0;
             $result = mysqli_query($db_handle, $sql);
                 if (mysqli_num_rows($result) > 0) {
                         $row = mysqli_fetch_assoc($result);
                         $id_global=$row["id_utilisateur"];
                         $_SESSION['id_global']=$id_global;
-                        $found=1;
+                         header("Location:VendeurMenu.php");
+                        exit();
                 }
                 else{
-                        echo "La connexion a échouée. Veuillez resaisir vos informations ou créer un compte:.";
+                        echo "La connexion a échouée. Veuillez resaisir vos informations ou créer un compte:";
                         echo "<form action='Vendeur.html' method='POST'\>";
                         echo "<BR><BR><input class='button' type='submit' value='Créer un compte'\>";
                         echo "</form></div>";
                 }
 
 
-        } else{ echo "Database not found";}
+        } else{ echo "Database non trouvée";}
 
         mysqli_close($db_handle);
 
@@ -60,10 +61,5 @@
         echo "Erreur : $erreur";
 
     }
-
-
     echo "<BR><form><button class='button' formaction='ConnexionVendeur.html' type='submit' >Retour à la connexion</button></form>";
-
  ?>
-        
-        
