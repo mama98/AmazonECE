@@ -24,6 +24,7 @@
     <body>
         
     <!--TOP NAVBAR-->
+    <section id="navbar">
     <nav class="top-bar">
       <div class="container-fluid">
         <div class="row">
@@ -31,7 +32,7 @@
              <a class="navbar-brand" href="#"><img src="photos/1280px-Amazon_logo_plain.svg.png"></a>
         </div>
         <div class="col-sm-6  d-none d-sm-block ">
-            <a class="contacter" href="#">Nous contacter</a>                       
+            <a class="contacter" href="#contact">Nous contacter</a>                       
         </div>
             
         <div class="col-xs-6  d-block d-sm-none ">
@@ -84,9 +85,112 @@
     </div>
   </div>
 </nav>
+</section>
   <!--NAVBAR PRINCIPALE END-->          
+  <!--caroussel page d'acceuil-->       
+    <section id="carrousel">
+            <div class="container">
+                <div id="myCarousel" class="carousel slide text-center" data-ride="carousel">
+                    <ol class="carousel-indicators">
+                         <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                         <li data-target="#myCarousel" data-slide-to="1"></li>
+                         <li data-target="#myCarousel" data-slide-to="2"></li>
+                    </ol>
+                    <div class="carousel-inner" role="listbox">
+                        <div class="carousel-item active">
+                            <img src="photos/ross_snb_2019_xv_split_voile_kit_front_rgb300dpi__prop_1000x604%20(1).jpg">
+                            <h4>Planche de Snowboard</h4>
+                                
+                        </div>
+                          <div class="carousel-item">
+                            <img src="photos/livre-photo-cewe-xxl%20(1).jpg">
+                            <h4>Livre photo</h4>
+                                 
+                        </div>
+                        <div class="carousel-item">
+                            <img src="photos/fr-stihl-veste-de-pluie-600x600_rdax_85.jpg">
+                            <h4>Vêtemet de pluie</h4>
+                                 
+                        </div>
+                    </div>
+                    <a class="carousel-control-prev" href="#myCarousel" data-slide="prev" role="button">
+                        <span class="fas fa-chevron-left fa-2x"></span>
+                    </a>
+                    <a class="carousel-control-next" href="#myCarousel" data-slide="next" role="button">
+                        <span class="fas fa-chevron-right fa-2x"></span>
+                    </a>
+                
+                </div>
+            
+            </div>
+      </section>  
+    <!--caroussel page d'acceuil END--> 
+        
+    <!--FOOTER-->
+        
+        
+        
+    <!--FOOTER END-->
+    <section id="endpage">
+        
+        <div class="container-fluid">
+        
+        <div class="col-xs-12" id="infos">
+            <div class="heading">
+                <h4>Informations:</h4>
+                <ul>
+                <li>Qui sommes nous?</li>
+                <li>Tarifs et délais de livraison</li>
+                <li>Retour produits</li>
+                <li>Suivie de commande</li>
+                </ul>
+            </div>    
+        </div>
+        
+        <div class="col-xs-12" id="contact">
+                <div class="heading">
+                    <h4>Nous contacter</h4>
+                </div>
+				<form role="form">
+                 
+					<div id="personalinfo" class="col-sm-6 ">
+			  			<div class="form-group">
+			  				<label for="name" class="control-label">Nom:</label>
+					    	<input type="text" class="form-control" id="nom" placeholder=" Entrez votre nom"  required>
+				  		</div>
+                        <div class="form-group">
+			  				<label for="name" class="control-label">Prenom:</label>
+					    	<input type="text" class="form-control" id="prenom" placeholder=" Entrez votre prenom"  required>
+				  		</div>
+				  		<div class="form-group">
+					    	<label for="email" class="control-label">Adresse Email:</label>
+					    	<input type="email" class="form-control" id="email" placeholder=" Entrez votre Email " required>
+					  	</div>	
+					  	
+                        
+			  		</div>
+			  		<div id="textarea" class="col-sm-6 ">
+			  			<div class="form-group">
+			  				<label for ="message" class="control-label"> Message:</label>
+			  			 	<textarea  class="form-control" id="message" placeholder="Entrez votre message" maxlength="200" required></textarea>
+                            <div id="textarea_feedback"></div>
+			  			</div>	
+                    <button type="submit" class="btn btn-default submit" onclick="sendmessage();"><i class="fa fa-paper-plane" ></i>  Envoyer</button>
+			    	</div>
+                 
+				</form>
+        </div>
+        </div>
            
-         
+    </section>
+    <!-- FOOTER-->
+       <footer class="text-center">
+            <a href="#navbar">
+                <span class="fas fa-chevron-up"></span>
+            </a> 
+           <h4>© ECE AMAZON</h4>
+        </footer>
+    <!-- FOOTER END -->
         
     
     </body>
