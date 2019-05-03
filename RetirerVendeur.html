@@ -1,0 +1,42 @@
+<?php
+  session_start();
+
+  $id = $_SESSION['id_global'];
+  include("php_functions.php");
+
+  if ($id != 1) {
+    echo "Autorisation refusée";
+  } else {
+    alert_and_redirect("All Good Neo", "AdminMenu.php"); //FIXME
+  }
+?>
+<html>
+<head>
+<title>Retirer un Vendeur:</title>
+<meta charset="utf-8">
+</head>
+<body>
+
+    <form action="RetirerVendeur.php" method="post">
+    <table>
+        <tr>
+            <td>Pseudo :</td>
+            <td><input type="text" name="pseudo"></td>
+        </tr>
+
+        <tr>
+            <td>Email :</td>
+            <td><input type="text" name="email"></td>
+        </tr>
+        <tr>
+            <td>Mot de passe :</td>
+            <td><input type="text" name="nom"></td>
+        </tr>
+        <tr>
+            <td colspan="2" align="center"><input type="submit" value="Supprimer"></td>
+        </tr>
+    </table>
+    </form>
+    <form action='AdminMenu.php' method='POST'><input class='button' type='submit' value='Retour au menu'></form>
+</body>
+</html>

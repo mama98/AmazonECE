@@ -83,9 +83,17 @@ if ($uploadOk == 0) {
     if($db_found){
       $id = $_SESSION['id_item'];
       if ($pic) {
-        $sql = "UPDATE Items SET photo_list = CONCAT(photo_list, '$filename') WHERE numero_vendeur = '$id'";
+        $sql_get_plist = "SELECT photo_list FROM Items WHERE id_item = '$id'";
+        $result_plist = mysqli_query($db_handle, $sql_get_plist);
+        $row = $result_plist->fetch_assoc();
+        if (is_null($row['photo_list'])) {
+          $plist = $filename;
+        } else {
+          $plist = $row['photo_list'] . ',' . $filename;
+        }
+        $sql = "UPDATE Items SET photo_list = '$plist' WHERE id_item = '$id'"; 
       } else {
-        $sql = "UPDATE Items SET video_name = '$filename' WHERE numero_vendeur = '$id'";
+        $sql = "UPDATE Items SET video_name = '$filename' WHERE id_item = '$id'";
       }
       $result = mysqli_query($db_handle, $sql);
 

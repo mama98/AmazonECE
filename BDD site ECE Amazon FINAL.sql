@@ -82,7 +82,8 @@ CREATE TABLE `Sports_Loisirs` (
 CREATE TABLE `Panier` (
 	`id_acheteur` INT NOT NULL,
 	`id_item` INT NOT NULL,
-	PRIMARY KEY (`id_acheteur`)
+	`quantite_voulu` INT NOT NULL,
+	PRIMARY KEY (`id_acheteur`,`id_item`)
 );
 
 ALTER TABLE `Vetements` ENGINE = INNODB; 
@@ -113,3 +114,7 @@ ALTER TABLE `Panier` ADD CONSTRAINT `Panier_fk0` FOREIGN KEY (`id_acheteur`) REF
 
 ALTER TABLE `Panier` ADD CONSTRAINT `Panier_fk1` FOREIGN KEY (`id_item`) REFERENCES `Items`(`id_item`);
 
+INSERT INTO Utilisateur(id_utilisateur, prenom_utilisateur, nom_utilisateur, email_utilisateur, login_utilisateur, mdp_utilisateur)
+		VALUES (1, 'Neo', 'Admin', 'admin', 'admin', 'admin');
+INSERT INTO Vendeur(id_vendeur, IBAN_vendeur, photo_vendeur, fond_vendeur)
+		VALUES (1, 'admin', 'admin.png', 'admin.png');
