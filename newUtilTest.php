@@ -33,7 +33,7 @@ session_start();
         define('DB_PASS', '');
 
         //Identifier le NomUtil de la base
-        $database = "amazonece2";
+        $database = "amazonece3";
 
         //conecter l'utilisateur dans BDD
         $db_handle = mysqli_connect(DB_SERVER, DB_USER, DB_PASS);
