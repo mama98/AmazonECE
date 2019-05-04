@@ -22,7 +22,7 @@
         define('DB_PASS', '');
 
         //Identifier le nom de la base
-        $database = "amazonece2";
+        $database = "amazonece3";
 
         //conecter l'utilisateur dans BDD
         $db_handle = mysqli_connect(DB_SERVER, DB_USER, DB_PASS);
@@ -47,14 +47,14 @@
                 }
                 if ($found==0){
                         echo "Votre pseudo n'est pas enregistré. Veillez créer un compte pour vous connecter.";
-                        echo "<form action='newUtil.php' method='POST'\>";
+                        echo "<form action='mainUtil.php' method='POST'\>";
                         echo "<BR><BR><input class='button' type='submit' value='Créer un compte'\>";
                         echo "</form></div>";
                 }	
                 else {
 
                     if ($Mdp==$MdpSession){
-                        include "mainAcheteur.php";
+                        include "mainAcheteur.php"; //redirige vers le menu 
                     }
                     else {
                         echo "Mot de passe incorrect.";
@@ -73,11 +73,11 @@
     }
     else {
         echo "Erreur : $erreur";
+        echo "<BR><form><button class='button' formaction='mainUtil.php' type='submit' >Return to the menu</button></form>";
 
     }
 
-    echo "<BR><form><button class='button' formaction='mainUtil.php' type='submit' >Return to the menu</button></form>";
-
+    
 
  
  ?>

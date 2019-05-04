@@ -56,7 +56,7 @@ session_start();
                 }
                 if ($found>0){
                         echo "Oups ! Le pseudo ou l'email existent déjà... Veillez recommencer.";
-                        echo "<form action='newUtil.php' method='POST'\>";
+                        echo "<form action='mainUtil.php' method='POST'\>";
                         echo "<BR><input class='button' type='submit' value='Retour'\>";
                         echo "</form></div>";
                 }	
@@ -66,29 +66,20 @@ session_start();
                         $sql = "INSERT INTO utilisateur(prenom_utilisateur, nom_utilisateur, email_utilisateur, login_utilisateur, mdp_utilisateur) VALUES('$PrenomUtil', '$NomUtil', '$MailUtil', '$PseudoUtil', '$MdpUtil')";
                         $result = mysqli_query($db_handle, $sql);
 
-                        //$id=$db_handle->insert_id;
-                        //$_SESSION["id_utilisateur"]=$id;
-                        
-
-                        //$id_util = "SELECT id_utilisateur from utilisateur WHERE email_utilisateur='$MailUtil'";
-                        //$result1 = mysqli_query($db_handle, $id_util);
-
-                        //$sql_id = "INSERT INTO acheteur(id_acheteur) VALUES ('$id_util')";
-
+                    
                         $sql1 = "SELECT * FROM utilisateur where email_utilisateur='$MailUtil'";
                         
                         $result3 = mysqli_query($db_handle, $sql1);
 
                         while($data = mysqli_fetch_assoc($result3)){
-
+                            /*
                             echo "Nom : ".$data['nom_utilisateur'].'<br>';
                             echo "Prenom : ".$data['prenom_utilisateur'].'<br>';
                             echo "Mail : ".$data['email_utilisateur'].'<br>';
-                            echo "Pseudo : ".$data['login_utilisateur'].'<br><br>';
-
-                            /*echo "<form action='nmainUtil.php' method='POST'\>";
-                            echo "<BR><input class='button' type='submit' value='Retour'\>";
-                            echo "</form></div>";*/
+                            echo "Pseudo : ".$data['login_utilisateur'].'<br><br>';*/ //pour mon compte
+                            echo "Félicitation votre compte est créé";
+                            echo "<BR><form><button class='button' formaction='mainUtil.php' type='submit' >Retour</button></form>";
+                            
                             
                         }
 
@@ -101,9 +92,10 @@ session_start();
     }
     else {
         echo "Erreur : $erreur";
+        echo "<BR><form><button class='button' formaction='mainUtil.php' type='submit' >Retour</button></form>";
 
     }
 
-    echo "<BR><form><button class='button' formaction='newUtil.php' type='submit' >Retour</button></form>";
+    
 
 ?>
