@@ -6,8 +6,8 @@ session_start();
 
     $erreur = "";
 
-    if($Quantite == "") {
-        $erreur .= "Le champ Quantite est vide.<br>";
+    if( ($Quantite == "") || ($Quantite == 0) ) {
+        $erreur .= "Veuillez choisir une quantité.<br>";
     }
     
     if($erreur == "") {
@@ -29,17 +29,13 @@ session_start();
             $sql = "INSERT INTO panier(id_acheteur, id_item, quantite_voulu) VALUES ('".$_SESSION['id']."', '$id_item', '$Quantite')";
             $result = mysqli_query($db_handle, $sql_login);
 
-            $sql1 = "SELECT * FROM panier where id_acheteur= '".$_SESSION['id']."' AND id_item = '$id_item'";
+            /*$sql1 = "SELECT * FROM panier where id_acheteur= '".$_SESSION['id']."' AND id_item = '$id_item'";
             
             $result1 = mysqli_query($db_handle, $sql1);
 
             while($data = mysqli_fetch_assoc($result1)){
-                //echo "Nom : ".$data['nom_acheteur'].'<br>';
-                //echo "Prenom : ".$data['prenom_acheteur'].'<br>';
-                //echo "Adresse 1 : ".$data['adresseL1_acheteur'].'<br>';
-               
                 
-            }
+            }*/ //Affichage des items dans un autre fichier panier.php
               
 
         } else{ echo "Database not found";}
