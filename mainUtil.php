@@ -86,7 +86,7 @@ session_start();
         
         <form class="form-signin" action="utilTest.php" method="post">
             <h1 class="h3 mb-3 font-weight-normal" style="text-align: center">Identifiez vous</h1>
-            <input type="text" name="Pseudo" id="inputEmail" class="form-control" placeholder="Pseudo" required="" autofocus="">
+            <input type="text" name="Pseudo" id="inputPseudo" class="form-control" placeholder="Pseudo" required="" autofocus="">
             <input type="password" name="Mdp" id="inputPassword" class="form-control" placeholder="Mot de passe" required="">
             
             <button class="btn btn-success btn-block" type="submit"><i class="fas fa-sign-in-alt"></i>Se connecter</button>
