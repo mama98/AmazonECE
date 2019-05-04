@@ -66,7 +66,7 @@ session_start();
         define('DB_PASS', '');
 
         //Identifier le nom de la base
-        $database = "amazonece2";
+        $database = "amazonece3";
 
         //conecter l'utilisateur dans BDD
         $db_handle = mysqli_connect(DB_SERVER, DB_USER, DB_PASS);
@@ -81,7 +81,7 @@ session_start();
               '$NumTel', '$TypeCarte', '$NumCarte', '$NomCarte', '$DateMois',' $DateAnnee', '$CodeSecu')";
             $result = mysqli_query($db_handle, $sql);
 
-            $sql1 = "select * FROM acheteur";
+            $sql1 = "SELECT * FROM acheteur where id_acheteur= '".$_SESSION['id']."' ";
             
             $result = mysqli_query($db_handle, $sql1);
 
@@ -104,9 +104,9 @@ session_start();
                 
             }
 
-            echo "Vérifiez que les informations sont correctes. Voulez vous finaliser la commande ?<br>";
-            echo "<BR><form><button class='button' formaction='main.php' type='submit' >Passer la commande</button></form>";
-            echo "<form><button class='button' formaction='mainUtil.php' type='submit' >Retour</button></form>";
+            echo "<br>Vérifiez que les informations sont correctes. Voulez vous finaliser la commande ?<br>";
+            echo "<BR><form><button class='button' formaction='main.php' type='submit' >Valider</button></form>";
+
 
         } else{ echo "Database not found";}
 
@@ -118,6 +118,6 @@ session_start();
 
     }
 
-    echo "<BR><form><button class='button' formaction='mainUtil.php' type='submit' >Return to the menu</button></form>";
+    echo "<BR><form><button class='button' formaction='acceuil.html' type='submit' >Return to the menu</button></form>";
 
 ?>
