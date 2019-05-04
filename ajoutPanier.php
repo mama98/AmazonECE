@@ -1,7 +1,9 @@
 <?php
+include ("php_functions.php");
 session_start();
 
-    $id_item=$_GET['id_item'];
+    $id_item=$_GET['arg'];
+
     $Quantite = isset($_POST["Quantite"])? $_POST["Quantite"] : "";
 
     $erreur = "";
@@ -26,17 +28,24 @@ session_start();
         //si le BDD existe, faire le traitement
         if($db_found){
 
-            $sql = "INSERT INTO panier(id_acheteur, id_item, quantite_voulu) VALUES ('".$_SESSION['id']."', '$id_item', '$Quantite')";
-            $result = mysqli_query($db_handle, $sql_login);
-
-            /*$sql1 = "SELECT * FROM panier where id_acheteur= '".$_SESSION['id']."' AND id_item = '$id_item'";
-            
+            $sql1 = "SELECT quantite FROM items where id_item='$id_item'";
             $result1 = mysqli_query($db_handle, $sql1);
-
             while($data = mysqli_fetch_assoc($result1)){
-                
-            }*/ //Affichage des items dans un autre fichier panier.php
-              
+
+                if ($Quantite>$data['quantite']) {
+                    alert('Quantité insuffisante');
+                    
+                }
+                else {
+                    $sql = "INSERT INTO panier(id_acheteur, id_item, quantite_voulu) VALUES ('".$_SESSION['id']."', '$id_item', '$Quantite')";
+                    $result = mysqli_query($db_handle, $sql);
+                    header("Location:acceuilAcheteur.php");
+                }
+
+            }
+
+            
+            
 
         } else{ echo "Database not found";}
 
@@ -48,6 +57,6 @@ session_start();
 
     }
 
-    echo "<BR><form><button class='button' formaction='newUtil.php' type='submit' >Retour</button></form>";
+    echo "<BR><form><button class='button' formaction='acceuilAcheteur.php' type='submit' >Retour</button></form>";
 
 ?>
