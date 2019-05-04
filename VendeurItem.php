@@ -5,6 +5,8 @@ $cat = $_GET['cat'];
 $id = $_SESSION['id_global'];
 $_SESSION['more_pics'] = false;
 
+include("php_functions.php");
+
 function alert_success($alert_msg) {
 	echo "<script type=\"text/javascript\">";
 	echo "alert('". $alert_msg ."');";
@@ -56,14 +58,15 @@ if($cat==1)
 		//si la BDD existe, faire le traitement
 		if($db_found){
 
-			$sql = "INSERT INTO Items(nom_item, prix_item, categorie, numero_vendeur, quantite, description_item) VALUES ('$nom_article','$prix_article', '$cat', '$id', '$quantite_article', '$description_article')";
+			$sql = "INSERT INTO Items(nom_item, prix_item, categorie, numero_vendeur, quantite, description_item, nb_vendu)
+							VALUES ('$nom_article','$prix_article', '$cat', '$id', '$quantite_article', '$description_article', 0)";
 			$result = mysqli_query($db_handle, $sql);
 
 			$id_item = $db_handle->insert_id;
 			$_SESSION['id_item'] = $id_item;
 
 			$sql2= "INSERT INTO Livres(id_livre, auteur, annee, edition) VALUES ('$id_item', '$nom_livres','$annee_livres', '$edition_livres')";
-			$result = mysqli_query($db_handle, $sql2);
+			$result = mysqli_query($db_handle, $sql2) or die(mysqli_error($db_handle));
 
 			if ($result) {
 				alert_success("Offre créée avec succès !");
@@ -106,10 +109,12 @@ if($cat==2)
 		//si la BDD existe, faire le traitement
 		if($db_found){
 
-			$sql = "INSERT INTO Items( nom_item, prix_item, categorie, numero_vendeur, quantite, description_item) VALUES ('$nom_article','$prix_article', '$cat','$id', '$quantite_article', '$description_article')";
+			$sql = "INSERT INTO Items(nom_item, prix_item, categorie, numero_vendeur, quantite, description_item, nb_vendu)
+							VALUES ('$nom_article','$prix_article', '$cat','$id', '$quantite_article', '$description_article', 0)";
 			$result = mysqli_query($db_handle, $sql);
 
 			$id_item = $db_handle->insert_id;
+			$_SESSION['id_item'] = $id_item;
 
 			$sql2= "INSERT INTO Musique(id_musique, auteur, annee, type) VALUES ('$id_item', '$nom_musique','$annee_musique', '$type_musique')";
 			$result = mysqli_query($db_handle, $sql2);
@@ -155,10 +160,12 @@ if($cat==3)
 		//si la BDD existe, faire le traitement
 		if($db_found){
 
-			$sql = "INSERT INTO Items( nom_item, prix_item, categorie, numero_vendeur, quantite, description_item) VALUES ('$nom_article','$prix_article', '$cat','$id', '$quantite_article', '$description_article')";
+			$sql = "INSERT INTO Items(nom_item, prix_item, categorie, numero_vendeur, quantite, description_item, nb_vendu)
+							VALUES ('$nom_article','$prix_article', '$cat','$id', '$quantite_article', '$description_article', 0)";
 			$result = mysqli_query($db_handle, $sql);
 
 			$id_item = $db_handle->insert_id;
+			$_SESSION['id_item'] = $id_item;
 
 			$sql2= "INSERT INTO Vetements(id_vetement, taille, couleur, sexe) VALUES ('$id_item', '$taille','$couleur', '$sexe')";
 			$result = mysqli_query($db_handle, $sql2);
@@ -202,10 +209,12 @@ if($cat==4)
 		//si la BDD existe, faire le traitement
 		if($db_found){
 
-			$sql = "INSERT INTO Items( nom_item, prix_item, categorie, numero_vendeur, quantite, description_item) VALUES ('$nom_article','$prix_article', '$cat','$id', '$quantite_article', '$description_article')";
+			$sql = "INSERT INTO Items(nom_item, prix_item, categorie, numero_vendeur, quantite, description_item, nb_vendu)
+							VALUES ('$nom_article','$prix_article', '$cat','$id', '$quantite_article', '$description_article', 0)";
 			$result = mysqli_query($db_handle, $sql);
 
 			$id_item = $db_handle->insert_id;
+			$_SESSION['id_item'] = $id_item;
 
 			$sql2= "INSERT INTO Sports_Loisirs(id_sportsLoisirs, typeSport, typeLoisirs) VALUES ('$id_item', '$type_sport','$type_loisir')";
 			$result = mysqli_query($db_handle, $sql2);

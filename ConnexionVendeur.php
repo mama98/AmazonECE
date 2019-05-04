@@ -1,6 +1,5 @@
 <?php
 session_start();
-include("php_functions.php");
 
 $_SESSION['more_pics'] = false;
 
@@ -44,7 +43,6 @@ if($erreur == "") {
       $id_global=$row["id_utilisateur"];
       $_SESSION['id_global']=$id_global;
 
-      alert($id_global);
 
       if ($id_global == 1
           && $row['login_utilisateur'] == 'admin'

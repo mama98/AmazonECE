@@ -100,14 +100,16 @@ if($db_found){
     }
 
     unset($value);
-    echo '<video width = "160" height="160" controls>';
-    echo '  <source src="videos_items/' . $video .'" type="video/' . $video_type .'">';
-    echo '</video>';
-        echo '<form action="SupprimerItem.php?arg='.$id_item.'& cat='.$cat.'" method="post" enctype="multipart/form-data">' ;
-        echo ' <input type="submit" value="Supprimer" />';
-        echo '</form>';
-}
-        echo "<BR><form><button class='button' formaction='VendeurMenu.php' type='submit' >Retour au menu</button></form>";
+    if (!is_null($video)) {
+      echo '<video width = "160" height="160" controls>';
+      echo '  <source src="videos_items/' . $video .'" type="video/' . $video_type .'">';
+      echo '</video>';
+    }
+    echo '<form action="SupprimerItem.php?arg='.$id_item.'& cat='.$cat.'" method="post" enctype="multipart/form-data">' ;
+    echo ' <input type="submit" value="Supprimer" />';
+    echo '</form>';
+  }
+  echo "<BR><form><button class='button' formaction='VendeurMenu.php' type='submit' >Retour au menu</button></form>";
 
 } else{
   echo "Database not found";

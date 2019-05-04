@@ -22,7 +22,7 @@ if ($arg == 'profil') {
 function alert($alert_msg) {
   echo "<script type=\"text/javascript\">";
   echo "alert('". $alert_msg ."');";
-  echo "location = \"my_profile.php\";";
+  echo "location = \"VendeurMenu.php\";";
   echo "</script>";
 }
 

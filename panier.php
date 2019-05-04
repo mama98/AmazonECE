@@ -2,7 +2,7 @@
 session_start();
 
         $id_item=$_GET['arg'];
-
+        $id_global_acheteur=$_SESSION['id'];
         define('DB_SERVER', 'localhost');
         define('DB_USER', 'root');
         define('DB_PASS', '');
@@ -32,7 +32,7 @@ session_start();
 
                 //echo print_r($row). "<br>"; pour debugger le row entier
                 if($cat==1){
-                $sql1 = "SELECT * FROM Items, Livres WHERE id_livre='$id_item' AND numero_vendeur='$id' AND id_item='$id_item'";
+                $sql1 = "SELECT * FROM Items, Livres, Acheteur a, Panier p WHERE 'a.id_item'='p.id_item'  AND 'a.id_acheteur'='p.id_acheteur' AND id_acheteur=$id_global_acheteur";
                 $result1 = mysqli_query($db_handle, $sql1);
                 while($data1 = mysqli_fetch_assoc($result1)){
                     echo "<div class='Livres'>Nom de l'article:" .$data1['nom_item']. '<br>';
@@ -47,7 +47,7 @@ session_start();
                 }
 
                 if($cat==2){
-                $sql2 = "SELECT * FROM Items, Musique WHERE id_musique='$id_item' AND numero_vendeur='$id' AND id_item='$id_item' ";
+                $sql2 = "SELECT * FROM Items, Musique, Acheteur a, Panier p  WHERE 'a.id_item'='p.id_item'  AND 'a.id_acheteur'='p.id_acheteur' AND id_acheteur=$id_global_acheteur ";
                 $result2 = mysqli_query($db_handle, $sql2);
                 while($data2 = mysqli_fetch_assoc($result2)){
                     echo "<div class='Musique'>Nom de l'article:" .$data2['nom_item']. '<br>';
@@ -62,7 +62,7 @@ session_start();
                 }
 
                 if($cat==3){
-                $sql3 = "SELECT * FROM Items, Vetements WHERE id_vetement='$id_item' AND numero_vendeur='$id' AND id_item='$id_item' ";
+                $sql3 = "SELECT * FROM Items, Vetements, Acheteur a, Panier p  WHERE 'a.id_item'='p.id_item'  AND 'a.id_acheteur'='p.id_acheteur' AND id_acheteur=$id_global_acheteur ";
                 $result3 = mysqli_query($db_handle, $sql3);
                 while($data3 = mysqli_fetch_assoc($result3)){
                     echo "<div class='Vetements'>Nom de l'article:" .$data3['nom_item']. '<br>';
@@ -77,7 +77,7 @@ session_start();
                 }
 
                 if($cat==4){
-                $sql4 = "SELECT * FROM Items, Sports_Loisirs WHERE id_sportsLoisirs='$id_item' AND numero_vendeur='$id' AND id_item='$id_item'";
+                $sql4 = "SELECT * FROM Items, Sports_Loisirs, Acheteur a, Panier p  WHERE 'a.id_item'='p.id_item'  AND 'a.id_acheteur'='p.id_acheteur' AND id_acheteur=$id_global_acheteur";
                 $result4 = mysqli_query($db_handle, $sql4);
                 while($data4 = mysqli_fetch_assoc($result4)){
                     echo "<div class='Sports_Loisirs'>Nom de l'article:" .$data4['nom_item']. '<br>';
