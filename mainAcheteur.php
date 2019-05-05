@@ -19,6 +19,7 @@ session_start();
         <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
         <!--css-->
         <link rel='stylesheet' href="css/ConnexionVendeur.css">
+        <link rel='stylesheet' href="css/mainUtil.css">
         <!--js-->
 
 </head>
@@ -67,11 +68,23 @@ session_start();
 </nav>
 </section>
 
+
+<div id='logreg-forms' >
     <form action="acheteurTest.php" method="post">
     <table>
+
         <tr>
-            <td>Nom :</td>
-            <td><input type="text" name="Nom"></td>
+            <td colspan="2" align="center">Entrez vos information pour la commande</td>
+        </tr> 
+
+        
+        <tr>
+            <td>
+                <div><br>Nom :</div>
+            </td>
+            <td>
+                <div><br><input type="text" name="Nom"></div>
+            </td>
         </tr> 
         <tr>
             <td>Prenom :</td>
@@ -101,9 +114,15 @@ session_start();
             <td>Numéro de téléphone :</td>
             <td><input type="number" name="NumTel"></td>
         </tr> 
+
+        
         <tr>
-            <td>Type de carte :</td>
-            <td><input type="text" name="TypeCarte"></td>
+            <td>
+                <div><br>Type de carte :</div>
+            </td>
+            <td>
+                <div><br><input type="text" name="TypeCarte"></div>
+            </td>
         </tr> 
         <tr>
             <td>Numéro de carte :</td>
@@ -128,11 +147,16 @@ session_start();
             <td>Code de sécurité :</td>
             <td><input type="number" name="CodeSecu"></td>
         </tr> 
+
+
         <tr>
-            <td colspan="2" align="center"><input type="submit" value="Envoyer"></td>
+            <td colspan="2" align="center">
+                <div><br><button class="btn btn-primary btn-block" type="submit">Valider</button></div>
+            </td>
         </tr> 
     </table>
     </form>
+</div>
 
     
 <!--Login END-->  

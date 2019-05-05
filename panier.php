@@ -182,7 +182,7 @@ session_start();
 
         mysqli_close($db_handle);
 
-        echo "<BR><form><button class='button' formaction='acceuilAcheteur.php' type='submit' >Commander</button></form>"; 
+        echo "<BR><form><button class='button' formaction='acceuilAcheteur.php' type='submit' >Retour accueil</button></form>"; 
 
 ?>
 

@@ -16,6 +16,7 @@
         <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
         <!--css-->
         <link rel='stylesheet' href="css/ConnexionVendeur.css">
+        
         <!--js-->
 
 </head>
@@ -100,7 +101,7 @@ session_start();
 
             while($data = mysqli_fetch_assoc($result)){
 
-                echo "<center><div class='box'>Mon Compte <br><br>"; 
+                echo "<center><div id='logreg-forms' >Mon Compte <br><br>"; 
                 echo "Nom : ".$data['nom_utilisateur'].'<br>';
                 echo "Prenom : ".$data['prenom_utilisateur'].'<br>';
                 echo "Mail : ".$data['email_utilisateur'].'<br>';

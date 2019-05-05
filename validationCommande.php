@@ -104,8 +104,8 @@
 
                     while($data = mysqli_fetch_assoc($result)){
 
-                        echo "Votre commande a bien été enregistrée !"              
-                        echo "<BR><form><button class='button' formaction='acceuilAcheteur.php' type='submit' >Retour aux achats</button></form>";
+                        echo "<div id='logreg-forms' >Votre commande a bien été enregistrée !";           
+                        echo "<BR><form><button class='btn btn-primary btn-block' formaction='acceuilAcheteur.php' type='submit' >Retour aux achats</button></form></div>";
 
                     }
                     

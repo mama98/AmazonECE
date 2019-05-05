@@ -16,6 +16,7 @@
         <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
         <!--css-->
         <link rel='stylesheet' href="css/ConnexionVendeur.css">
+        <link rel='stylesheet' href="css/mainUtil.css">
         <!--js-->
 
 </head>
@@ -153,14 +154,14 @@ session_start();
             $result = mysqli_query($db_handle, $sql1);
 
             while($data = mysqli_fetch_assoc($result)){
-                echo "Nom : ".$data['nom_acheteur'].'<br>';
+                echo "<div id='logreg-forms' >Nom : ".$data['nom_acheteur'].'<br>';
                 echo "Prenom : ".$data['prenom_acheteur'].'<br>';
                 echo "Adresse 1 : ".$data['adresseL1_acheteur'].'<br>';
-                echo "Adresse 2 : ".$data['adresseL2_acheteur'].'<br><br>';
+                echo "Adresse 2 : ".$data['adresseL2_acheteur'].'<br>';
                 echo "Ville : ".$data['ville'].'<br>';
                 echo "Code Postal : ".$data['codePostal'].'<br>';
                 echo "Pays : ".$data['pays'].'<br>';
-                echo "Numéro de téléphone : ".$data['numTel'].'<br>';
+                echo "Numéro de téléphone : ".$data['numTel'].'<br><br>';
                 echo "Type de carte : ".$data['typeCarte'].'<br>';
                 echo "Numéro de carte : ".$data['numCarte'].'<br>';
                 echo "Nom de carte : ".$data['nomCarte'].'<br>';
@@ -172,7 +173,7 @@ session_start();
             }
 
             echo "<br>Vérifiez que les informations sont correctes. Voulez vous finaliser la commande ?<br>";
-            echo "<BR><form><button class='button' formaction='validationCommande.php' type='submit' >Valider</button></form>";
+            echo "<BR><form><button class='btn btn-success btn-block' formaction='validationCommande.php' type='submit' >Valider</button></form>";
 
 
         } else{ echo "Database not found";}
@@ -182,11 +183,11 @@ session_start();
     }
     else {
         echo "Erreur : $erreur";
-        echo "<BR><form><button class='button' formaction='mainAcheteur.php' type='submit' >Retour</button></form>";
+        echo "<BR><form><button class='btn btn-primary btn-block' formaction='mainAcheteur.php' type='submit' >Retour</button></form>";
 
     }
 
-    echo "<BR><form><button class='button' formaction='acceuilAcheteur.php' type='submit' >Retour au menu principal</button></form>";
+    echo "<BR><form><button class='btn btn-primary btn-block' formaction='acceuilAcheteur.php' type='submit' >Retour au menu principal</button></form></div>";
 
 ?>
 
