@@ -1,85 +1,172 @@
- <?php
- session_start();
- mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
- 
-    $Pseudo = isset($_POST["Pseudo"])? $_POST["Pseudo"] : "";
-    $Mdp = isset($_POST["Mdp"])? $_POST["Mdp"] : "";
-    
-    $erreur = "";
+<html>
+<head>
+<title>Connexion</title>
 
-    
-    if($Pseudo == "") {
-        $erreur .= "Le champ Pseudo est vide.<br>";
-    }
-    if($Mdp == "") {
-        $erreur .= "Le champ Mot de passe est vide.<br>";
-    }
+        <meta charset="utf-8"/>
+        <!--to use reponsive-->
+        <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    if($erreur == "") {
-        $_SESSION["login_utilisateur"]=$Pseudo;
-        define('DB_SERVER', 'localhost');
-        define('DB_USER', 'root');
-        define('DB_PASS', '');
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" >
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-        //Identifier le nom de la base
-        $database = "amazonece3";
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css">
+        <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+        <!--css-->
+        <link rel='stylesheet' href="css/ConnexionVendeur.css">
+        <!--js-->
 
-        //conecter l'utilisateur dans BDD
-        $db_handle = mysqli_connect(DB_SERVER, DB_USER, DB_PASS);
-        $db_found = mysqli_select_db($db_handle, $database);
+</head>
+<body>
 
-        //si le BDD existe, faire le traitement
-        if($db_found){
+    <!--TOP NAVBAR-->
+    <section id="navbar">
+    <nav class="top-bar">
+      <div class="container-fluid">
+        <div class="row">
+        <div class="col-sm-6  d-none d-sm-block ">
+             <a class="navbar-brand" href="#"><img src="photos/1280px-Amazon_logo_plain.svg.png"></a>
+        </div>
+        <div class="col-sm-6  d-none d-sm-block ">
+            <a class="contacter" href="#contact">Nous contacter</a>
+        </div>
 
-            $sql_user = "SELECT * FROM utilisateur";
-            $found=0;
-            $result = mysqli_query($db_handle, $sql_user);
-                if (mysqli_num_rows($result) > 0) {
-                    while($row = mysqli_fetch_assoc($result)) 
-                    {
-                        if ($Pseudo==$row["login_utilisateur"]){
-                            $found=1;
-                            $_SESSION['id'] = $row["id_utilisateur"];
-                            $MdpSession = $row["mdp_utilisateur"];
-                        }
-                        
-                    }
-                }
-                if ($found==0){
-                        echo "Votre pseudo n'est pas enregistré. Veillez créer un compte pour vous connecter.";
-                        echo "<form action='mainUtil.php' method='POST'\>";
-                        echo "<BR><BR><input class='button' type='submit' value='Créer un compte'\>";
-                        echo "</form></div>";
-                }	
-                else {
+        <div class="col-xs-6  d-block d-sm-none ">
+             <a class="navbar-brand" href="#"><img src="photos/XS-Amazon_logo_plain.svg%20(1).png"></a>
+        </div>
+        <div class="col-xs-6  d-block d-sm-none">
+            <a class="contacter" href="#">Nous contacter</a>
+        </div>
+        </div>
+      </div>
+    </nav>
+    <!--TOP NAVBAR END-->
 
-                    if ($Mdp==$MdpSession){
-                        include "mainAcheteur.php"; //redirige vers le menu 
-                    }
-                    else {
-                        echo "Mot de passe incorrect.";
-                        echo "<form action='mainUtil.php' method='POST'\>";
-                        echo "<BR><input class='button' type='submit' value='Retour'\>";
-                        echo "</form></div>";
-                    }
-                    
-                }
-            
 
-        } else{ echo "Database not found";}
+<!--NAVBAR PRINCIPALE-->
 
-        mysqli_close($db_handle);
+<nav class="navbar navbar-expand-md navbar-inverse">
+  <div class="container-fluid">
 
-    }
-    else {
-        echo "Erreur : $erreur";
-        echo "<BR><form><button class='button' formaction='mainUtil.php' type='submit' >Return to the menu</button></form>";
+    <div class="navbar-header">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#myNavbar">
+    <i class="fas fa-bars fa-lg"></i>
+    </button>
+    </div>
 
-    }
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav mr-auto">
+      </ul>
+    </div>
+  </div>
+</nav>
+</section>
 
-    
+<?php
+session_start();
+include("php_functions.php");
+mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
 
- 
- ?>
-        
-        
+$pseudo = isset($_POST["Pseudo"])? $_POST["Pseudo"] : "";
+$mdp = isset($_POST["Mdp"])? $_POST["Mdp"] : "";
+
+define('DB_SERVER', 'localhost');
+define('DB_USER', 'root');
+define('DB_PASS', '');
+
+//Identifier le nom de la base
+$database = "amazonece3";
+
+//conecter l'utilisateur dans BDD
+$db_handle = mysqli_connect(DB_SERVER, DB_USER, DB_PASS);
+$db_found = mysqli_select_db($db_handle, $database);
+
+//si le BDD existe, faire le traitement
+if($db_found){
+
+  $sql_user = "SELECT id_utilisateur FROM Utilisateur, Acheteur WHERE login_utilisateur = '$pseudo' AND mdp_utilisateur = '$mdp' AND id_utilisateur = id_acheteur";
+  $result = mysqli_query($db_handle, $sql_user) or die(mysqli_error($db_handle));
+  if (mysqli_num_rows($result) == 0) {
+    alert_and_redirect("Vous n\'avez pas de compte ou vous \
+n\'avez pas entré vos informations correctement",
+    "mainUtil.php");
+  } else if (mysqli_num_rows($result) != 0){
+    $row = mysqli_fetch_assoc($result);
+    $_SESSION['id'] = $row['id_utilisateur'];
+    alert_and_redirect("Connexion réussie !", "acceuilAcheteur.php");
+  }
+} else{
+  alert_and_redirect("Erreur dans la Database", "mainUtil.php");
+}
+
+mysqli_close($db_handle);
+?>
+
+<!--Login END-->
+<!--endpage-->
+<section id="endpage">
+
+        <div class="container-fluid">
+
+        <div class="col-xs-12" id="infos">
+            <div class="heading">
+                <h4>Informations:</h4>
+                <ul>
+                <li>Qui sommes nous?</li>
+                <li>Tarifs et délais de livraison</li>
+                <li>Retour produits</li>
+                <li>Suivie de commande</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="col-xs-12" id="contact">
+                <div class="heading">
+                    <h4>Nous contacter</h4>
+                </div>
+				<form role="form">
+
+					<div id="personalinfo" class="col-sm-6 ">
+			  			<div class="form-group">
+			  				<label for="name" class="control-label">Nom:</label>
+					    	<input type="text" class="form-control" id="nom" placeholder=" Entrez votre nom"  required>
+				  		</div>
+                        <div class="form-group">
+			  				<label for="name" class="control-label">Prenom:</label>
+					    	<input type="text" class="form-control" id="prenom" placeholder=" Entrez votre prenom"  required>
+				  		</div>
+				  		<div class="form-group">
+					    	<label for="email" class="control-label">Adresse Email:</label>
+					    	<input type="email" class="form-control" id="email" placeholder=" Entrez votre Email " required>
+					  	</div>
+
+
+			  		</div>
+			  		<div id="textarea" class="col-sm-6 ">
+			  			<div class="form-group">
+			  				<label for ="message" class="control-label"> Message:</label>
+			  			 	<textarea  class="form-control" id="message" placeholder="Entrez votre message" maxlength="200" required></textarea>
+                            <div id="textarea_feedback"></div>
+			  			</div>
+                    <button type="submit" class="btn btn-default submit" onclick="sendmessage();"><i class="fa fa-paper-plane" ></i>  Envoyer</button>
+			    	</div>
+
+				</form>
+        </div>
+        </div>
+
+    </section>
+    <!--endpage END-->
+
+    <!-- FOOTER-->
+       <footer class="text-center">
+            <a href="#navbar">
+                <span class="fas fa-chevron-up"></span>
+            </a>
+           <h4>© ECE AMAZON</h4>
+        </footer>
+    <!-- FOOTER END -->
+</body>
+</html>

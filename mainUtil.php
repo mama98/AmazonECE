@@ -3,12 +3,12 @@ session_start();
 ?>
 <html>
 <head>
-<title>Connection</title>
+<title>Connection client</title>
 
         <meta charset="utf-8"/>
         <!--to use reponsive-->
-        <meta name="viewport" content="width=device-width, initial-scale=1"> 
-        
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" >
         <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
@@ -23,7 +23,7 @@ session_start();
          <script src="Js/mainUtil.js"></script>
 </head>
 <body>
-    
+
     <!--TOP NAVBAR-->
     <section id="navbar">
     <nav class="top-bar">
@@ -33,90 +33,91 @@ session_start();
              <a class="navbar-brand" href="#"><img src="photos/1280px-Amazon_logo_plain.svg.png"></a>
         </div>
         <div class="col-sm-6  d-none d-sm-block ">
-            <a class="contacter" href="#contact">Nous contacter</a>                       
+            <a class="contacter" href="#contact">Nous contacter</a>
         </div>
-            
+
         <div class="col-xs-6  d-block d-sm-none ">
              <a class="navbar-brand" href="#"><img src="photos/XS-Amazon_logo_plain.svg%20(1).png"></a>
         </div>
         <div class="col-xs-6  d-block d-sm-none">
-            <a class="contacter" href="#">Nous contacter</a>                       
+            <a class="contacter" href="#">Nous contacter</a>
         </div>
         </div>
       </div>
-    </nav>   
+    </nav>
     <!--TOP NAVBAR END-->
-    
-    
+
+
 <!--NAVBAR PRINCIPALE-->
-  
+
 <nav class="navbar navbar-expand-md navbar-inverse">
   <div class="container-fluid">
-  
+
     <div class="navbar-header">
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#myNavbar">
     <i class="fas fa-bars fa-lg"></i>
     </button>
     </div>
-      
+
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav mr-auto">
         <li class=""><a id="ventesflash" href="#">Ventes flash</a></li>
-        <li class="dropdown">
-          <a class="dropdown-toggle" data-toggle="dropdown" href="#">Catégories</a>
-          <ul id="categorie"  class="dropdown-menu">
-            <li><a href="#">Livres</a></li>
-            <li><a href="#">Musique</a></li>
-            <li><a href="#">Vêtements</a></li>
-            <li><a href="#">Sports et Loisir</a></li>
-          </ul>
-        </li>
-         <li class=""><a href="#">Vente</a></li>
+        <li class=""><a href="#">Vente</a></li>
         <li class=""><a href="#">Admin</a></li>
       </ul>
     </div>
   </div>
 </nav>
 </section>
-  <!--NAVBAR PRINCIPALE END-->      
+  <!--NAVBAR PRINCIPALE END-->
 
 <!--login-->
- 
+
     <div id="logreg-forms" >
-        
+
         <form class="form-signin" action="utilTest.php" method="post">
             <h1 class="h3 mb-3 font-weight-normal" style="text-align: center">Identifiez vous</h1>
             <input type="text" name="Pseudo" id="inputPseudo" class="form-control" placeholder="Pseudo" required="" autofocus="">
             <input type="password" name="Mdp" id="inputPassword" class="form-control" placeholder="Mot de passe" required="">
-            
+
             <button class="btn btn-success btn-block" type="submit"><i class="fas fa-sign-in-alt"></i>Se connecter</button>
             <hr>
             <!-- <p>Don't have an account!</p>  -->
             <button class="btn btn-primary btn-block" type="submit" id="btn-signup"><i class="fas fa-user-plus"></i> Créer un compte</button>
             </form>
-            
-            <form class="form-signup" action="newUtilTest.php" method="post">
 
+            <form class="form-signup" action="newUtilTest.php" method="post"> <!-- TODO Change to new Utilisateur ?i mainAcheteur here-->
+                <h1 class="h3 mb-3 font-weight-normal" style="text-align: center">Créer un compte</h1>
                 <input type="text"  name="NomUtil" id="user-name" class="form-control" placeholder="Nom" required="" autofocus="">
                 <input type="text"  name="PrenomUtil" id="user-surname" class="form-control" placeholder="Prénom" required autofocus="">
-
                 <input type="email" name="MailUtil" id="user-email" class="form-control" placeholder="Email address" required autofocus="">
                 <input type="text" name="PseudoUtil" id="user-pseudo" class="form-control" placeholder="Pseudo" required autofocus="">
-
                 <input type="password" name="MdpUtil" id="user-pass" class="form-control" placeholder="Password" required autofocus="">
+                <input type="text" name="Adresse1" class="form-control" placeholder="Addresse 1">
+                <input type="text" name="Adresse2" class="form-control" placeholder="Addresse 2">
+                <input type="text" name="Ville" class="form-control" placeholder="Ville">
+                <input type="number" name="CodeP" class="form-control" placeholder="Code Postal">
+                <input type="text" name="Pays" class="form-control" placeholder="Pays">
+                <input type="number" name="NumTel" class="form-control" placeholder="Numéro de télephone">
+                <input type="text" name="TypeCarte" class="form-control" placeholder="Type de Carte">
+                <input type="number" name="NumCarte" class="form-control" placeholder="Numéro de Carte">
+                <input type="text" name="NomCarte" class="form-control" placeholder="Nom de la Carte">
+                <input type="number" name="DateMois" class="form-control" placeholder="Mois d'expiration">
+                <input type="number" name="DateAnnee" class="form-control" placeholder="Année d'expiration">
+                <input type="number" name="CodeSecu" class="form-control" placeholder="Code de Sécurité">
 
                 <button class="btn btn-primary btn-block" type="submit"><i class="fas fa-user-plus"></i></button>
                 <a href="#" id="cancel_signup"><i class="fas fa-angle-left"></i> Retour</a>
             </form >
         <br>
-            
+
     </div>
     <!--login END-->
     <!--endpage-->
     <section id="endpage">
-        
+
         <div class="container-fluid">
-        
+
         <div class="col-xs-12" id="infos">
             <div class="heading">
                 <h4>Informations:</h4>
@@ -126,15 +127,15 @@ session_start();
                 <li>Retour produits</li>
                 <li>Suivie de commande</li>
                 </ul>
-            </div>    
+            </div>
         </div>
-        
+
         <div class="col-xs-12" id="contact">
                 <div class="heading">
                     <h4>Nous contacter</h4>
                 </div>
 				<form role="form">
-                 
+
 					<div id="personalinfo" class="col-sm-6 ">
 			  			<div class="form-group">
 			  				<label for="name" class="control-label">Nom:</label>
@@ -147,31 +148,31 @@ session_start();
 				  		<div class="form-group">
 					    	<label for="email" class="control-label">Adresse Email:</label>
 					    	<input type="email" class="form-control" id="email" placeholder=" Entrez votre Email " required>
-					  	</div>	
-					  	
-                        
+					  	</div>
+
+
 			  		</div>
 			  		<div id="textarea" class="col-sm-6 ">
 			  			<div class="form-group">
 			  				<label for ="message" class="control-label"> Message:</label>
 			  			 	<textarea  class="form-control" id="message" placeholder="Entrez votre message" maxlength="200" required></textarea>
                             <div id="textarea_feedback"></div>
-			  			</div>	
+			  			</div>
                     <button type="submit" class="btn btn-default submit" onclick="sendmessage();"><i class="fa fa-paper-plane" ></i>  Envoyer</button>
 			    	</div>
-                 
+
 				</form>
         </div>
         </div>
-           
+
     </section>
     <!--endpage END-->
-        
+
     <!-- FOOTER-->
        <footer class="text-center">
             <a href="#navbar">
                 <span class="fas fa-chevron-up"></span>
-            </a> 
+            </a>
            <h4>© ECE AMAZON</h4>
         </footer>
     <!-- FOOTER END -->

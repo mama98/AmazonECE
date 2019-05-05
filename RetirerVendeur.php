@@ -101,7 +101,7 @@ if($erreur == "") {
         $result_user = mysqli_query($db_handle, $sql_user)
         or die(mysqli_error($db_handle));
 
-        alert_and_redirect("Utilisateur supprimé correctement.", "AdminMenu.php");
+        alert_and_redirect("Utilisateur supprimé correctement.", "VendeurMenu.php");
       }
 
     } else { echo "Database non trouvée";}
