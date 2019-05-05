@@ -1,5 +1,6 @@
-
-
+<?php
+session_start();
+?>
 <!DOCTYPE HTML>
 <html>
     <head>
@@ -66,14 +67,12 @@
         <li class="dropdown nav-item ">
           <a class="dropdown-toggle nav-link" data-toggle="dropdown" href="#">Catégories</a>
           <ul id="categorie"  class="dropdown-menu">
-            <li><a href="#">Livres</a></li>
-            <li><a href="#">Musique</a></li>
-            <li><a href="#">Vêtements</a></li>
-            <li><a href="#">Sports et Loisir</a></li>
+            <li><a href="ListeLivre.php">Livres</a></li>
+            <li><a href="ListeMusique.php">Musique</a></li>
+            <li><a href="ListeVetements.php">Vêtements</a></li>
+            <li><a href="ListeSportLoisirs.php">Sports et Loisir</a></li>
           </ul>
         </li>
-         <li class="nav-item "><a href="VendeurMenu.php">Vente</a></li>
-        <li class="nav-item "><a href="#">Admin</a></li>
       </ul>
      
       <ul class="nav navbar-nav navbar-right">     
@@ -86,7 +85,7 @@
             
        </li>
        <li class="nav-item ">
-            <a  class="nav-link" id="cart-heart" href="#"><i class="fa fa-cart-plus"></i></a>  <!--panier-->
+            <a  class="nav-link" id="cart-heart" href="panier.php"><i class="fa fa-cart-plus"></i></a>  <!--panier-->
        </li>
      </ul>
     </div>

@@ -62,16 +62,7 @@ session_start();
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav mr-auto">
         <li class=""><a id="ventesflash" href="#">Ventes flash</a></li>
-        <li class="dropdown">
-          <a class="dropdown-toggle" data-toggle="dropdown" href="#">Catégories</a>
-          <ul id="categorie"  class="dropdown-menu">
-            <li><a href="#">Livres</a></li>
-            <li><a href="#">Musique</a></li>
-            <li><a href="#">Vêtements</a></li>
-            <li><a href="#">Sports et Loisir</a></li>
-          </ul>
-        </li>
-         <li class=""><a href="#">Vente</a></li>
+        <li class=""><a href="#">Vente</a></li>
         <li class=""><a href="#">Admin</a></li>
       </ul>
     </div>
