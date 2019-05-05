@@ -3,7 +3,7 @@ session_start();
 ?>
 <html>
 <head>
-<title>Connection</title>
+<title>Connection client</title>
 
         <meta charset="utf-8"/>
         <!--to use reponsive-->
@@ -96,6 +96,7 @@ session_start();
             </form>
             
             <form class="form-signup" action="newUtilTest.php" method="post">
+                <h1 class="h3 mb-3 font-weight-normal" style="text-align: center">Créer un compte</h1>
 
                 <input type="text"  name="NomUtil" id="user-name" class="form-control" placeholder="Nom" required="" autofocus="">
                 <input type="text"  name="PrenomUtil" id="user-surname" class="form-control" placeholder="Prénom" required autofocus="">

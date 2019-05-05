@@ -73,10 +73,9 @@ body
   }
    .titre2{
 color: #555555; font-family: 'Raleway', sans-serif; font-size: 12pt; font-weight: 300;  }
-
     .photo_fond{
     position: absolute;
-    top: 400px;
+    top: 300px;
     right: 80px;
   }
     .container {
@@ -142,7 +141,7 @@ color: #555555; font-family: 'Raleway', sans-serif; font-size: 12pt; font-weight
   <p style="color: #555555; font-family: Palatino; font-style: italic; font-size: 40px; font-weight: 700;">Bienvenue sur votre page de vente <?php echo $nom; ?></p>
   <img src="<?php echo 'images_profil/'.$profil ;?>" alt="Avatar" style=" width: 160px; height: 160px; border-radius: 50%;\">
 
-  <div class="container"><br><br>
+  <br><br><div class="container">
 
     <div class="logo">
       <span style="font-size: 7em; color: Mediumslateblue;">
@@ -162,8 +161,8 @@ color: #555555; font-family: 'Raleway', sans-serif; font-size: 12pt; font-weight
 
     </div>
     <div class="photo_profil">
-     <div class="logo"> <span style="font-size: 2em; color: Mediumslateblue;">
-        <i class="fas fa-cogs"></i></span></div>
+      <span style="font-size: 2em; color: Mediumslateblue;">
+        <i class="fas fa-cogs"></i></span>
       <h3>Modifer la photo de profil</h3>
     <form action="image.php?arg=profil" method="post" enctype="multipart/form-data">
       <table>
@@ -179,8 +178,8 @@ color: #555555; font-family: 'Raleway', sans-serif; font-size: 12pt; font-weight
       </form>
     </div>
       <div class="photo_fond">
-      <div class="logo"><span style="font-size: 2em; color: Mediumslateblue;">
-        <i class="fas fa-cogs"></i></span></div>
+      <span style="font-size: 2em; color: Mediumslateblue;">
+        <i class="fas fa-cogs"></i></span>
         <h3>Modifer la photo de fond</h3>
       <form action="image.php?arg=fond" method="post" enctype="multipart/form-data">
         <table>

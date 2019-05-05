@@ -4,13 +4,6 @@ session_start();
 $_SESSION['more_pics'] = false;
 $id = $_SESSION['id_global'];
 
-include("php_functions.php");
-
-if ($id != 1) {
-  alert_and_redirect("Vous ne pouvez pas acceder a ce menu",
-                      "ConnexionVendeur.html");
-}
-
 define('DB_SERVER', 'localhost');
 define('DB_USER', 'root');
 define('DB_PASS', '');

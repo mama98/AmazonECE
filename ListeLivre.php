@@ -1,4 +1,5 @@
 <?php
+
 define('DB_SERVER', 'localhost');
 define('DB_USER', 'root');
 define('DB_PASS', '');
@@ -25,6 +26,7 @@ if($db_found){
         $video_type = end($video_split);
 
         $id_item=$data['id_item'];
+
         echo "<div class='Livres'>Nom de l'article:" .$data['nom_item']. '<br>';
         echo "Description:" .$data['description_item']. '<br>';
         echo "Quantite:" .$data['quantite']. '<br>';
@@ -40,11 +42,9 @@ if($db_found){
     }
 
     unset($value);
-    if (!is_null($video)) {
-      echo '<video width = "160" height="160" controls>';
-      echo '  <source src="videos_items/' . $video .'" type="video/' . $video_type .'">';
-      echo '</video>';
-    }
+    echo '<video width = "160" height="160" controls>';
+    echo '  <source src="videos_items/' . $video .'" type="video/' . $video_type .'">';
+    echo '</video>';
     echo '<form action="ajoutPanier.php?arg='.$id_item.'" method="post" enctype="multipart/form-data">' ;
     echo ' <input type="submit" value="Ajouter au panier" />';
     echo '</form>';

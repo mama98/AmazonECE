@@ -109,52 +109,35 @@
 			<div><button type="button" onclick="myFunctionSportsLoisirs(); reset()">Sports et Loisirs</button></div>  <br>
 
 		<div id="Livres" style="display:none">
-			<table>
-				<tr>
-				<td>Nom de l'auteur:</td>
-				<td><input type="text" name="nom_livres"/></td>
-				</tr>
-				<tr>
-				<td>Année de Parution:</td>
-				<td><input type="text" name="annee_livres"/></td>
-				</tr>
-				<tr>
-				<td>Edition:</td>
-				<td><input type="text" name="edition_livres"/></td>
-			</tr>
-		</table>
+				<div>Nom de l'auteur:</div>
+				<div><input type="text" name="nom_livres"/></div>
+
+				<div>Année de Parution:</div>
+				<div><input type="text" name="annee_livres"/></div>
+
+				<div>Edition:</div>
+				<div><input type="text" name="edition_livres"/></div>
 		</div>
 
 		<div id="Musique" style="display:none">
-			<table>
-				<tr>
-				<td>Nom de l'auteur:</td>
-				<td><input type="text" name="nom_musique"/></td>
-				</tr>
-				<tr>
-				<td>Année de Parution:</td>
-				<td><input type="text" name="annee_musique"/></td>
-				</tr>
-				<tr>
-				<td>Genre de musique:</td>
-				<td><input type="text" name="type_musique"/></td>
-				</tr>
-			</table>
+				<div>Nom de l'auteur:</div>
+				<div><input type="text" name="nom_musique"/></div>
+
+				<div>Année de Parution:</div>
+				<div><input type="text" name="annee_musique"/></div>
+
+				<div>Genre de musique:</div>
+				<div><input type="text" name="type_musique"/></div>
 		</div>
 
 		<div id="Vetements" style="display:none">
-			<table>
-			<tr>
-				<td>Taille:( séparer les tailles par des virgules )</td> 
-				<td><input type="text" name="taille"/></td>
-			</tr>
-			<tr>
-				<td>Couleur:( séparer les couleurs par des virgules )</td>
-				<td><input type="text" name="couleur"/></td>
-			</tr>
-			<tr>
-				<td>Sexe:</td>
-				<td>
+				<div>Taille:( séparer les tailles par des virgules )</div> 
+				<div><input type="text" name="taille"/></div>
+
+				<div>Couleur:( séparer les couleurs par des virgules )</div>
+				<div><input type="text" name="couleur"/></div>
+
+				<div>Sexe:</div>
 				  <div>
 				    <input type="radio" id="choixhomme"
 				     name="sexe" value="homme">
@@ -167,20 +150,15 @@
 				    <input type="radio" id="choixhomme"
 				     name="sexe" value="Non spécifié">
 				    <label for="choixNAN">Non spécifié</label>		
-				  </div> </td>
-			</tr>
-			</table>
+				  </div> 
 		</div>
 
 
 		<div id="Sports_Loisirs" style="display:none">
-			<table>
-				<tr>
-					<td>Choisissez entre les deux:</td>
-					<td><button type="button" onclick="myFunctionSport()">Sports</button></td>
-					<td><button type="button" onclick="myFunctionLoisirs()">Loisirs</button></td>
-				</tr>
-			</table>
+			<div>Choisissez entre les deux:</div>
+				<div><button type="button" onclick="myFunctionSport()">Sports</button></div> <br>
+				<div><button type="button" onclick="myFunctionLoisirs()">Loisirs</button></div>
+
 			<br>
 				
 				<div id="sport" style="display:none">Type de sports:
@@ -193,29 +171,23 @@
 
 
 		<div id="Description" style="display:none" >
-			<table>
-			<tr>
-		 		<td>Nom de l'article:</td>
-				<td><input type="text" name="nom_article"/></td>
-			</tr>
-			<tr>
-				<td>Description de l'article:</td>
-				<td><input type="text" name="description_article"/></td>
-			</tr>
-			<tr>
-				<td>Quantité à vendre:</td>
-				<td><input type="text" name="quantite_article"/></td>
-			</tr>
-			<tr>
-				<td>Prix:</td>
-				<td><input type="text" name="prix_article"/></td>
-			</tr>
-		</table>
+		 		<div>Nom de l'article:</div>
+				<div><input type="text" name="nom_article"/></div>
+			
+				<div>Description de l'article:</div>
+				<div><input type="text" name="description_article"/></div>
+
+				<div>Quantité à vendre:</div>
+				<div><input type="text" name="quantite_article"/></div>
+
+				<div>Prix:</div>
+				<div><input type="text" name="prix_article"/></div>
 		</div>
 
 			<div> 
 				<input type="submit" value="Valider et passer à l'étape suivante" /> 
 			</div> <br>
+
 			</form>
 		    <form action='VendeurMenu.php' method='POST'><input class='button' type='submit' value='Retour'></form>
 

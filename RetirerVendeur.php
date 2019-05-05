@@ -45,64 +45,51 @@ if($erreur == "") {
     WHERE login_utilisateur='$Pseudo'
     AND email_utilisateur='$Email'
     AND nom_utilisateur='$Nom'");
-
-    if(mysqli_num_rows($query_id) == 0) {
-      echo "Cet utilisateur n'existe pas !";
-    }
-
     $row_id = $query_id->fetch_assoc();
     $id = $row_id['id_utilisateur'];
 
     $query_item = mysqli_query($db_handle, "SELECT id_item, categorie
       FROM Items
       WHERE numero_vendeur=$id");
+      while ($row_item = $query_item->fetch_assoc()) {
+        $id_item = $row_item['id_item'];
+        $cat = $row_item['categorie'];
 
-      if (!$query_item) {
-        alert("Cet utilisateur ne possede aucun objet !");
-      } else {
-
-        while ($row_item = $query_item->fetch_assoc()) {
-          $id_item = $row_item['id_item'];
-          $cat = $row_item['categorie'];
-
-          switch($cat) {
-            case 1:
-            $db = 'Livres';
-            $db_id = 'id_livre';
-            break;
-            case 2:
-            $db = 'Musique';
-            $db_id = 'id_musique';
-            break;
-            case 3:
-            $db = 'Vetements';
-            $db_id = 'id_vetement';
-            break;
-            case 4:
-            $db = 'Sports_Loisirs';
-            $db_id = 'id_sportsLoisirs';
-            break;
-          }
-
-          $sql_del_specific =
-          "DELETE FROM $db WHERE $db_id = $id_item;";
-          $exec_sql_del_specific = mysqli_query($db_handle, $sql_del_specific)
-          or die(mysqli_error($db_handle));
-
-          $sql_del_items = "DELETE FROM Items WHERE id_item = $id_item;";
-          $exec_sql_del_items = mysqli_query($db_handle, $sql_del_items)
-          or die(mysqli_error($db_handle));
-
+        switch($cat) {
+          case 1:
+          $db = 'Livres';
+          $db_id = 'id_livre';
+          break;
+          case 2:
+          $db = 'Musique';
+          $db_id = 'id_musique';
+          break;
+          case 3:
+          $db = 'Vetements';
+          $db_id = 'id_vetement';
+          break;
+          case 4:
+          $db = 'Sports_Loisirs';
+          $db_id = 'id_sportsLoisirs';
+          break;
         }
-        $sql_vendeur = "DELETE FROM Vendeur WHERE id_vendeur=$id;";
-        $result_vendeur = mysqli_query($db_handle, $sql_vendeur)
-        or die(mysqli_error($db_handle));
-        $sql_user = "DELETE FROM Utilisateur WHERE id_utilisateur='$id';";
-        $result_user = mysqli_query($db_handle, $sql_user)
+
+        $sql_del_specific =
+        "DELETE FROM $db WHERE $db_id = $id_item;";
+        $exec_sql_del_specific = mysqli_query($db_handle, $sql_del_specific)
         or die(mysqli_error($db_handle));
 
-        alert_and_redirect("Utilisateur supprimé correctement.", "AdminMenu.php");
+        $sql_del_items = "DELETE FROM Items WHERE id_item = $id_item;";
+        $exec_sql_del_items = mysqli_query($db_handle, $sql_del_items)
+        or die(mysqli_error($db_handle));
+
       }
+      $sql_vendeur = "DELETE FROM Vendeur WHERE id_vendeur=$id;";
+      $result_vendeur = mysqli_query($db_handle, $sql_vendeur)
+      or die(mysqli_error($db_handle));
+      $sql_user = "DELETE FROM Utilisateur WHERE id_utilisateur='$id';";
+      $result_user = mysqli_query($db_handle, $sql_user)
+      or die(mysqli_error($db_handle));
 
     } else { echo "Database non trouvée";}
 

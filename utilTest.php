@@ -54,7 +54,7 @@
                 else {
 
                     if ($Mdp==$MdpSession){
-                        include "mainAcheteur.php"; //redirige vers le menu 
+                        include "acceuilAcheteur.php"; //redirige vers le menu 
                     }
                     else {
                         echo "Mot de passe incorrect.";
@@ -73,7 +73,7 @@
     }
     else {
         echo "Erreur : $erreur";
-        echo "<BR><form><button class='button' formaction='mainUtil.php' type='submit' >Return to the menu</button></form>";
+        echo "<BR><form><button class='button' formaction='mainUtil.php' type='submit' >Retour</button></form>";
 
     }
 

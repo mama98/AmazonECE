@@ -13,20 +13,18 @@
  if($nom == "") {$erreur .= "Le champ nom est vide. <br>";}
  if($prenom == "") {$erreur .= " Le champ prenom est vide. <br>";}
  if($email == "") {$erreur .= "Le champ email est vide. <br>";}
- if($login== "") {$erreur .= "Le champ login est vide. <br>";}
+ if($login== "") {$erreur .= "Le champ pseudo est vide. <br>";}
  if($mdp== "") {$erreur .= "Le champ mot de passe est vide. <br>";}
  if($IBAN == "") {$erreur .= "Le champ IBAN est vide. <br>";}
 
 if ($erreur == "") {
-
+	
 define('DB_SERVER', 'localhost');
 define('DB_USER', 'root');
 define('DB_PASS', '');
 
 //identifier le prenom de la base de donnee
 $database ="amazonece3";
-
-include("php_functions.php");
 
 //connecter l'utilisateur dans BDD
 $db_handle= mysqli_connect(DB_SERVER, DB_USER, DB_PASS);
@@ -35,26 +33,18 @@ $db_found= mysqli_select_db($db_handle, $database);
 //si la BDD existe, faire le traitement
 if($db_found){
 
-  $sql_check = "SELECT login_utilisateur, prenom_utilisateur, nom_utilisateur FROM Utilisateur WHERE login_utilisateur='$login' AND nom_utilisateur='$nom'";
-  $check = mysqli_query($db_handle, $sql_check);
+	$sql = "INSERT INTO Utilisateur( prenom_utilisateur, nom_utilisateur, email_utilisateur, login_utilisateur, mdp_utilisateur) VALUES ('$prenom','$nom', '$email','$login', '$mdp')";
+	$result = mysqli_query($db_handle, $sql);
 
-  if (mysqli_num_rows($check) == 0) {
+	$id = $db_handle->insert_id;
+  $_SESSION['id_global'] = $id;
+	//echo $id;
+  //Ajouter images par defaut a la place de NULL
+	$sql2= "INSERT INTO Vendeur(id_vendeur, IBAN_vendeur, photo_vendeur, fond_vendeur) VALUES ('$id', '$IBAN', 'default.png', 'default.png')";
+	$result = mysqli_query($db_handle, $sql2);
 
-    $sql = "INSERT INTO Utilisateur(prenom_utilisateur, nom_utilisateur, email_utilisateur, login_utilisateur, mdp_utilisateur) VALUES ('$prenom','$nom', '$email','$login', '$mdp')";
-    $result = mysqli_query($db_handle, $sql);
-
-    $id = $db_handle->insert_id;
-    $_SESSION['id_global'] = $id;
-    //echo $id;
-    //Ajouter images par defaut a la place de NULL
-    $sql2= "INSERT INTO Vendeur(id_vendeur, IBAN_vendeur, photo_vendeur, fond_vendeur) VALUES ('$id', '$IBAN', 'default.png', 'default.png')";
-    $result = mysqli_query($db_handle, $sql2);
-
-    alert_and_redirect("Profil créé !", "VendeurMenu.php");
-    exit();
-  } else {
-    alert_and_redirect("Cet utilisateur existe deja !", "Vendeur.html");
-  }
+  header("Location:my_profile.php");
+  exit();
 }
 
 // si la bDD existe pas

@@ -1,6 +1,6 @@
 <html>
 <head>
-<link rel="stylesheet" type="text/css" href="compte.css" >
+<link rel="stylesheet" type="text/css" href="css/compte.css" >
 </head>
 <body>
 <?php
@@ -20,7 +20,7 @@ session_start();
         //si le BDD existe, faire le traitement
         if($db_found){
 
-            $sql = "SELECT * FROM utilisateur WHERE id_acheteur= '".$_SESSION['id']."' ";
+            $sql = "SELECT * FROM utilisateur WHERE id_utilisateur= '".$_SESSION['id']."' ";
             $result = mysqli_query($db_handle, $sql);
 
             while($data = mysqli_fetch_assoc($result)){
@@ -30,8 +30,8 @@ session_start();
                 echo "Prenom : ".$data['prenom_utilisateur'].'<br>';
                 echo "Mail : ".$data['email_utilisateur'].'<br>';
                 echo "Pseudo : ".$data['login_utilisateur'].'<br><br>';         
-                echo '<form action="accueilAcheteur.php" method="post" enctype="multipart/form-data">' ;
-                echo ' <ibutton class="buttonSub3" type="submit" value="Retour menu" />';
+                echo '<form action="acceuilAcheteur.php" method="post" enctype="multipart/form-data">' ;
+                echo ' <button class="buttonSub3" type="submit" >Retour menu</button>';
                 echo '</form></div></center>';     
 
             }

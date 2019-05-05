@@ -1,8 +1,10 @@
-<!DOCTYPE html>
+
+
+<!DOCTYPE HTML>
 <html>
-<head>
-	<title>Création de votre compte vendeur AmazonECE</title>
-	<meta charset="utf-8">
+    <head>
+        <title>ECE AMAZON</title>
+        <meta charset="utf-8"/>
         <!--to use reponsive-->
         <meta name="viewport" content="width=device-width, initial-scale=1"> 
         
@@ -15,12 +17,15 @@
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css">
         <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
         <!--css-->
-        <link rel='stylesheet' href="css/Vendeur.css">
+        <link rel='stylesheet' href="css/acceuilAcheteur.css">
         <!--js-->
-</head>
-<body>
-    
-     <!--TOP NAVBAR-->
+        
+        
+    </head>
+
+    <body>
+        
+    <!--TOP NAVBAR-->
     <section id="navbar">
     <nav class="top-bar">
       <div class="container-fluid">
@@ -57,9 +62,9 @@
       
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav mr-auto">
-        <li class=""><a id="ventesflash" href="#">Ventes flash</a></li>
-        <li class="dropdown">
-          <a class="dropdown-toggle" data-toggle="dropdown" href="#">Catégories</a>
+        <li class="nav-item "><a  class="nav-link" id="ventesflash" href="#">Ventes flash</a></li>
+        <li class="dropdown nav-item ">
+          <a class="dropdown-toggle nav-link" data-toggle="dropdown" href="#">Catégories</a>
           <ul id="categorie"  class="dropdown-menu">
             <li><a href="#">Livres</a></li>
             <li><a href="#">Musique</a></li>
@@ -67,79 +72,40 @@
             <li><a href="#">Sports et Loisir</a></li>
           </ul>
         </li>
-         <li class=""><a href="#">Vente</a></li>
-        <li class=""><a href="#">Admin</a></li>
+         <li class="nav-item "><a href="VendeurMenu.php">Vente</a></li>
+        <li class="nav-item "><a href="#">Admin</a></li>
       </ul>
+     
+      <ul class="nav navbar-nav navbar-right">     
+       <li class="nav-item ">
+            <a class="nav-link" href="monCompteAcheteur.php"><i class="fa fa-user"></i>Mon Compte</a>
+       </li>
+         <li class="nav-item ">
+            
+            <a class="nav-link" href="deconnexion.php"><i class="fas fa-sign-out-alt"></i>Deconnexion</a>
+            
+       </li>
+       <li class="nav-item ">
+            <a  class="nav-link" id="cart-heart" href="#"><i class="fa fa-cart-plus"></i></a>  <!--panier-->
+       </li>
+     </ul>
     </div>
   </div>
 </nav>
 </section>
-  <!--NAVBAR PRINCIPALE END-->      
-  
-<!--creation compte-->
-	<!--<h3>Enregistrement de l'utilisateur</h3>
-	<p>Veuillez remplir les informations suivantes afin de créer votre compte:</p>
-	<form action="vendeur.php" method="post" enctype="multipart/form-data">
-		<table>
-			<tr>
-				<td>Nom:</td>
-				<td><input type="text" name="nom"/></td>
-			</tr>
-			<tr>
-				<td>Prénom:</td>
-				<td><input type="text" name="prenom"/></td>
-			</tr>
-			<tr>
-				<td>Email:</td>
-				<td><input type="text" name="email"/></td>
-			</tr>
-			<tr>
-				<td>Pseudo:</td>
-				<td><input type="text" name="login"/></td>
-			</tr>
-			<tr>
-				<td>Mot de Passe:</td>
-				<td><input type="text" name="mdp"/></td>
-			</tr>
-			<tr>
-				<td>IBAN:</td>
-				<td><input type="text" name="IBAN"/></td>
-			</tr>
-			<tr>
-			<td colspan="2" align="center">
-				<input type="submit" value="Valider" />
-			</td>
-			</tr>
-
-			</table>
-			</form>
-			<div id="errordiv">
-			</div>-->
-    
-    <div id="logreg-forms" >
-            
-            <form class="form-signin" action="vendeur.php" method="post" enctype="multipart/form-data">
-                <h1 class="h3 mb-3 font-weight-normal" style="text-align: center">Créer un compte</h1>
-                <input type="text"  name="nom" id="user-name" class="form-control" placeholder="Nom" required="" autofocus="">
-                <input type="text"  name="prenom" id="user-surname" class="form-control" placeholder="Prénom" required autofocus="">
-
-                <input type="email" name="email" id="user-email" class="form-control" placeholder="Email address" required autofocus="">
-                <input type="text" name="login" id="user-pseudo" class="form-control" placeholder="Pseudo" required autofocus="">
-
-                <input type="password" name="mdp" id="user-pass" class="form-control" placeholder="Password" required autofocus="">
-                <input type="text" name="IBAN" id="user-pass" class="form-control" placeholder="IBAN" required autofocus="">
-
-                <button class="btn btn-primary btn-block" type="submit"><i class="fas fa-user-plus"></i></button>
-                <a href="ConnexionVendeur.html" id="cancel_signup"><i class="fas fa-angle-left"></i> Retour</a>
-            </form >
-        <br>
-            
-    </div>
-   <div id="errordiv"></div>
-
-    <!--creation compte END-->
-    
-     <!--endpage-->
+  <!--NAVBAR PRINCIPALE END-->     
+<p>         
+        
+        
+        
+        
+        
+</p>
+ 
+        
+        
+        
+    <!--endpage-->
     <section id="endpage">
         
         <div class="container-fluid">
@@ -202,5 +168,8 @@
            <h4>© ECE AMAZON</h4>
         </footer>
     <!-- FOOTER END -->
-		</body>
-		</html>
+        
+    
+    </body>
+    
+</html>
