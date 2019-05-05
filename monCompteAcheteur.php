@@ -1,5 +1,7 @@
 <html>
 <head>
+<title>Mon compte</title>
+    
 <meta charset="utf-8"/>
         <!--to use reponsive-->
         <meta name="viewport" content="width=device-width, initial-scale=1"> 
@@ -13,14 +15,13 @@
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css">
         <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
         <!--css-->
-        <link rel="stylesheet" type="text/css" href="css/compte.css" >
+        <link rel='stylesheet' href="css/ConnexionVendeur.css">
         <!--js-->
-        
-        
 
 </head>
 <body>
- <!--TOP NAVBAR-->
+
+    <!--TOP NAVBAR-->
     <section id="navbar">
     <nav class="top-bar">
       <div class="container-fluid">
@@ -57,38 +58,26 @@
       
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav mr-auto">
-        <li class="nav-item "><a  class="nav-link" id="ventesflash" href="#">Ventes flash</a></li>
-        <li class="dropdown nav-item ">
-          <a class="dropdown-toggle nav-link" data-toggle="dropdown" href="#">Catégories</a>
-          <ul id="categorie"  class="dropdown-menu">
-            <li><a href="#">Livres</a></li>
-            <li><a href="#">Musique</a></li>
-            <li><a href="#">Vêtements</a></li>
-            <li><a href="#">Sports et Loisir</a></li>
-          </ul>
-        </li>
-         <li class="nav-item "><a href="ConnexionVendeur.html">Vente</a></li>
-        <li class="nav-item "><a href="#">Admin</a></li>
       </ul>
-     
+
       <ul class="nav navbar-nav navbar-right">     
-       <li class="nav-item ">
-            <a class="nav-link" href="monCompteAcheteur.php"><i class="fa fa-user"></i>Mon Compte</a>
-       </li>
          <li class="nav-item ">
             
             <a class="nav-link" href="deconnexion.php"><i class="fas fa-sign-out-alt"></i>Deconnexion</a>
             
        </li>
        <li class="nav-item ">
-            <a  class="nav-link" id="cart-heart" href="#"><i class="fa fa-cart-plus"></i></a>  <!--panier-->
+            <a  class="nav-link" id="cart-heart" href="panier.php"><i class="fa fa-cart-plus"></i></a>  <!--panier-->
        </li>
      </ul>
+
     </div>
   </div>
 </nav>
 </section>
-  <!--NAVBAR PRINCIPALE END--> 
+
+
+
 <?php
 session_start();
 
@@ -111,18 +100,15 @@ session_start();
 
             while($data = mysqli_fetch_assoc($result)){
 
-                echo "<div class='container-fluid text-center box'>Mon Compte <br><br>"; 
+                echo "<center><div class='box'>Mon Compte <br><br>"; 
                 echo "Nom : ".$data['nom_utilisateur'].'<br>';
                 echo "Prenom : ".$data['prenom_utilisateur'].'<br>';
                 echo "Mail : ".$data['email_utilisateur'].'<br>';
                 echo "Pseudo : ".$data['login_utilisateur'].'<br><br>';         
                 echo '<form action="acceuilAcheteur.php" method="post" enctype="multipart/form-data">' ;
-                echo ' <button class="btn btn-primary btn-block" type="submit" >Retour menu</button>';
-                echo '</form>'; 
-                /*echo"<form action='deconnexion.php' method='post'>";
-                echo"<button class='btn btn-primary btn-block' type='submit'><i class='fas fa-sign-out-alt'></i>Deconnexion</button>";
-                echo"</form>";*/
-                echo"</div>";
+                echo ' <button class="buttonSub3" type="submit" >Retour menu</button>';
+                echo '</form></div></center>';     
+
             }
             
 
@@ -132,8 +118,11 @@ session_start();
 
 ?>
 
+
+    
+<!--Login END-->  
 <!--endpage-->
-    <section id="endpage">
+<section id="endpage">
         
         <div class="container-fluid">
         
@@ -195,6 +184,5 @@ session_start();
            <h4>© ECE AMAZON</h4>
         </footer>
     <!-- FOOTER END -->
-    
 </body>
 </html>
